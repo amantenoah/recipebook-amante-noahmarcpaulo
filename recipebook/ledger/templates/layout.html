@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Book</title>
+    {% load static %}
+    <link href="{% static 'ledger/style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1> <a href="/recipes/list">Recipe Book</a></h1>
+    {% block content %}
+    
+    {% endblock %}
+</body>
+</html>
