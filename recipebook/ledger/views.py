@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Recipe, RecipeIngredient, Ingredient
 # Create your views here.
 
 ctx = {
@@ -70,7 +71,8 @@ ctx = {
 
 
 def index(request):
-    return render(request, "index.html", ctx)
+    recipes = Recipe.objects.all()
+    return render(request, "index.html", {"recipes": recipes})
 
 def recipe(request, num=1):
     short_ctx = {}
