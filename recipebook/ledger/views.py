@@ -4,80 +4,19 @@ from django.http import HttpResponse
 from .models import Recipe, RecipeIngredient, Ingredient
 # Create your views here.
 
-ctx = {
-    "recipes": [
-        {
-            "name": "Recipe 1",
-            "ingredients": [
-                {
-                    "name": "tomato",
-                    "quantity": "3pcs"
-                },
-                {
-                    "name": "onion",
-                    "quantity": "1pc"
-                },
-                {
-                    "name": "pork",
-                    "quantity": "1kg"
-                },
-                {
-                    "name": "water",
-                    "quantity": "1L"
-                },
-                {
-                    "name": "sinigang mix",
-                    "quantity": "1 packet"
-                }
-            ],
-            "link": "/recipe/1"
-        },
-        {
-            "name": "Recipe 2",
-            "ingredients": [
-                {
-                    "name": "garlic",
-                    "quantity": "1 head"
-                },
-                {
-                    "name": "onion",
-                    "quantity": "1pc"
-                },
-                {
-                    "name": "vinegar",
-                    "quantity": "1/2cup"
-                },
-                {
-                    "name": "water",
-                    "quanity": "1 cup"
-                },
-                {
-                    "name": "salt",
-                    "quantity": "1 tablespoon"
-                },
-                {
-                    "name": "whole black peppers",
-                    "quantity": "1 tablespoon"
-                },
-                {
-                    "name": "pork",
-                    "quantity": "1 kilo"
-                }
-            ],
-            "link": "/recipe/2"
-        }
-    ]
-}
-
-
 def index(request):
+    # Just gets all recipes since everything needed can be accessed from there
     recipes = Recipe.objects.all()
-    return render(request, "index.html", {"recipes": recipes})
+    ctx = {
+        "recipes": recipes
+    }
+    return render(request, "index.html", ctx)
 
 def recipe(request, num=1):
-    short_ctx = {}
-    if num == 1:
-        short_ctx = ctx["recipes"][0]
-    elif num == 2:
-        short_ctx = ctx["recipes"][1]
-    return render(request, "recipe.html", short_ctx)
+    recipe = Recipe.objects.get(pk=num)
+    ingredients = RecipeIngredient.objects.filter(recipe__exact=recipe)
+    ctx = {
+        "recipe": recipe.name,
+        "ingredients": ingredients
+    }
+    return render(request, "recipe.html", ctx)
