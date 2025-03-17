@@ -1,15 +1,13 @@
 from django.shortcuts import render
-from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Recipe, RecipeIngredient, Ingredient
 # Create your views here.
 
 def index(request):
     # Just gets all recipes since everything needed can be accessed from there
     recipes = Recipe.objects.all()
-    ctx = {
-        "recipes": recipes
-    }
+    ctx = { 
+           "recipes": recipes
+        }
     return render(request, "index.html", ctx)
 
 def recipe(request, num=1):

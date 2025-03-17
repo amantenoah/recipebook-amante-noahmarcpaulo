@@ -1,5 +1,13 @@
-https://github.com/amantenoah/recipebook-amante-noahmarcpaulo
+repository link: https://github.com/amantenoah/recipebook-amante-noahmarcpaulo
 
+*   54f8ba0	amantenoah	Thu Mar 6 08:19:24 2025 +0800	Merge pull request #2 from amantenoah/lab2
+|\  
+| * 8244902	amantenoah	Thu Mar 6 01:17:22 2025 +0800	fin, ready for merge
+| * df285c0	amantenoah	Thu Mar 6 00:10:38 2025 +0800	added basic admin page, halfway done with views
+| * 5caacec	amantenoah	Thu Mar 6 00:10:05 2025 +0800	added basic admin page, halfway done with views
+| * efa44b0	amantenoah	Wed Mar 5 23:30:22 2025 +0800	first draft on models
+| * a6aa18b	amantenoah	Wed Mar 5 22:55:49 2025 +0800	housekeeping
+|/  
 *   3bd539a	amantenoah	Mon Feb 24 13:39:04 2025 +0800	Merge pull request #1 from amantenoah/lab1
 |\  
 | * bcf5d7c	amantenoah	Mon Feb 24 13:16:11 2025 +0800	redid repository and reuploaded
