@@ -16,18 +16,19 @@
     
         <div>
             {% if user.is_authenticated %}
-                <span class="me-3">Welcome, {{ user.username }}!</span>
-                <a href="{% url 'logout' %}?next={% url 'login' %}" class="btn btn-outline-primary">Logout</a>
-            {% else %}
-                <form method="POST" action="{% url 'logout' %}">
+            <span class="me-3">Welcome, {{ user.username }}!</span>
+            <form method="POST" action="{% url 'logout' %}" style="display: inline;">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Logout</button>
-                </form>
+                <button type="submit" class="btn btn-outline-primary">Logout</button>
+            </form>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-outline-primary">Login</a>
             {% endif %}
         </div>
     </header>
-    currently viewing page: <strong>{% block page%}{% endblock %}</strong>
+    <h4 style="margin-left: 1%;">
+        currently viewing page: <strong>{% block page%}{% endblock %}</strong>
+    </h4>
     {% block content %}
     
     {% endblock %}
