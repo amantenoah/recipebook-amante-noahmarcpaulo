@@ -7,8 +7,9 @@ from .models import Profile
 class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
+    verbose_name_plural = "author"
 
-class UserAdmin(admin.BaseUserAdmin):
+class UserAdmin(BaseUserAdmin):
     inlines = [ProfileInline,]
 
 admin.site.unregister(User)
