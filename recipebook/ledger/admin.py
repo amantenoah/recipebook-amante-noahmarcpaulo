@@ -1,7 +1,19 @@
 from django.contrib import admin
 from .models import Recipe, Ingredient, RecipeIngredient
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.models import User
+from .models import Profile
 
-# Magic code that allows inline editing??? :o
+class ProfileInline(admin.StackedInline):
+    model = Profile
+    can_delete = False
+
+class UserAdmin(admin.BaseUserAdmin):
+    inlines = [ProfileInline,]
+
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
+
 class RecipeIngredientInline(admin.TabularInline):  
     model = RecipeIngredient
     extra = 1  
