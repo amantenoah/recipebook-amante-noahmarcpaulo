@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
+{% block page%} Recipe Details{% endblock %}
 {% block content %} 
     <ul>
         <li>
-            {{ recipe }}
+            {{ recipe }} by {{ user }}
             <ul>
                 {% for ingredient in ingredients %}
                 <li>
