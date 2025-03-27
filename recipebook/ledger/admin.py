@@ -30,9 +30,7 @@ class RecipeAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
     search_fields = ('name', )
     list_filter = ('name', )  
-    inlines = [RecipeIngredientInline, RecipeImageInline]
-   
-   
+    inlines = [RecipeIngredientInline, RecipeImageInline]      
 
 @admin.register(Ingredient)
 class IngredientAdmin(admin.ModelAdmin):

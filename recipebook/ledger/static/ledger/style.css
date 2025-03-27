@@ -1,0 +1,28 @@
+.carousel {
+    max-width: 500px;
+    max-height: 300px;
+    margin: auto;
+}
+
+#carouselIndicators {
+    width: 400px; /* Adjust to your preferred size */
+    height: 300px; /* Adjust to your preferred size */
+    margin-left: 0; /* Align to the left */
+    display: block;
+}
+
+
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 10%; /* Slightly increase so they remain clickable */
+    height: 100%; /* Match carousel height */
+    top: 0; /* Align with carousel */
+    transform: none; /* Remove the vertical offset */
+}

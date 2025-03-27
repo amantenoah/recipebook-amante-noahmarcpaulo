@@ -1,4 +1,3 @@
-from django.utils import timezone
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -36,7 +35,7 @@ class Recipe(models.Model):
         return reverse('ledger:recipe', args=[str(self.id)])
 
 class RecipeImage(models.Model):
-    image = models.ImageField()
+    image = models.ImageField(upload_to='recipe_images/')
     description = models.CharField(max_length=255)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="recipe_image")
     

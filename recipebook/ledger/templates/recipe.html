@@ -12,15 +12,21 @@
                 {% endfor %}
             </ul>
         </li>
+        {% if images %}
         <div id="carouselIndicators" class="carousel slide">
             <div class="carousel-indicators">
                 {% for image in images %}
-                    <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="{{ forloop.counter }}" aria-label="Slide {{ forloop.counter }}"></button>
+                    <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="{{ forloop.counter0 }}" 
+                        {% if forloop.first %} class="active" {% endif %} aria-label="Slide {{ forloop.counter0 }}">
+                    </button>
                 {% endfor %}
             </div>
+
             <div class="carousel-inner">
                 {% for image in images %}
-                    <img src="{image.image}" class="d-block w-50" alt="{image.description}">
+                    <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                        <img src="{{ image.image.url }}" alt="{{ image.description }}">
+                    </div>
                 {% endfor %}
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
@@ -30,7 +36,13 @@
               <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
-              </button>
+            </button>
         </div>
+        {% else %}
+        <li> No images </li>
+        {% endif %}
     </ul>
+    <style>
+        
+    </style>
 {% endblock %}
