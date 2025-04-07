@@ -8,21 +8,15 @@ class RecipeForm(forms.ModelForm):
         fields = ['name']
 
 
-class IngredientForm(forms.ModelForm):
-    class Meta:
-        model = Ingredient
-        fields = ['name']
-        
 class RecipeIngredientForm(forms.ModelForm):
     class Meta:
         model = RecipeIngredient
         fields = ['ingredient', 'quantity']
-        
         
 # https://docs.djangoproject.com/en/5.2/topics/forms/modelforms/#inline-formsets
 RecipeIngredientFormSet = inlineformset_factory(
     Recipe,
     RecipeIngredient,
     fields = ['ingredient', 'quantity'],
-    extra=2,
+    extra=1,
 )
