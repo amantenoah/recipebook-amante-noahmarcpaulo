@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Recipe, Ingredient, RecipeIngredient
+from .models import Recipe, Ingredient, RecipeIngredient, RecipeImage
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 from .models import Profile
@@ -18,6 +18,11 @@ admin.site.register(User, UserAdmin)
 class RecipeIngredientInline(admin.TabularInline):  
     model = RecipeIngredient
     extra = 1  
+    
+class RecipeImageInline(admin.TabularInline): 
+    model = RecipeImage
+    extra = 1
+    fields = ('image', 'description') 
 
 # Added decorators as per django documentation
 @admin.register(Recipe)
@@ -25,7 +30,7 @@ class RecipeAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
     search_fields = ('name', )
     list_filter = ('name', )  
-    inlines = [RecipeIngredientInline] # Allows full creation of recipe in one tab, including ingredients and quantities
+    inlines = [RecipeIngredientInline, RecipeImageInline]      
 
 @admin.register(Ingredient)
 class IngredientAdmin(admin.ModelAdmin):

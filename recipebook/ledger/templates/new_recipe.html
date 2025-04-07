@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block page%} New Recipe {% endblock %}
+{% block content %} 
+<form method="POST">
+    {% csrf_token %}
+
+    {{ recipe_form.as_p }}
+
+    {{ formset.management_form }}
+    {% for form in formset %}
+        <ul>
+            <li class="form_row">
+                {{ form.as_p }}
+            </li>
+        </ul>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Save Recipe</button>
+</form>
+{% endblock %}

@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 {% block page%} Recipe Details{% endblock %}
-{% block content %} 
+{% block content %}
+    <a href="{% url 'ledger:add_image' pk %}" class="btn btn-outline-secondary text-secondary text-decoration-none hover-text-light">
+        Add an image
+    </a>
     <ul>
         <li>
             {{ recipe }} by {{ user }}
@@ -9,8 +12,37 @@
                 <li>
                     {{ ingredient.ingredient}} - {{ingredient.quantity}}
                 </li>
-        {% endfor %}
+                {% endfor %}
             </ul>
         </li>
+        {% if images %}
+        <div id="carouselIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+                {% for image in images %}
+                    <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="{{ forloop.counter0 }}" 
+                        {% if forloop.first %} class="active" {% endif %} aria-label="Slide {{ forloop.counter0 }}">
+                    </button>
+                {% endfor %}
+            </div>
+
+            <div class="carousel-inner">
+                {% for image in images %}
+                    <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                        <img src="{{ image.image.url }}" alt="{{ image.description }}">
+                    </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        {% else %}
+        <li> No images </li>
+        {% endif %}
     </ul>
 {% endblock %}
