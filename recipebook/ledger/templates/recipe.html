@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 {% block page%} Recipe Details{% endblock %}
-{% block content %} 
+{% block content %}
+    <a href="{% url 'ledger:add_image' pk %}" class="btn btn-outline-secondary text-secondary text-decoration-none hover-text-light">
+        Add an image
+    </a>
     <ul>
         <li>
             {{ recipe }} by {{ user }}
@@ -42,7 +45,4 @@
         <li> No images </li>
         {% endif %}
     </ul>
-    <a href="{% url 'ledger:add_image' %}" class="btn btn-outline-secondary text-secondary text-decoration-none hover-text-light">
-        Add an image
-    </a>
 {% endblock %}

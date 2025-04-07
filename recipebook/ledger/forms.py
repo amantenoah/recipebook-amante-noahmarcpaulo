@@ -13,6 +13,11 @@ class RecipeIngredientForm(forms.ModelForm):
         model = RecipeIngredient
         fields = ['ingredient', 'quantity']
         
+class RecipeImageForm(forms.ModelForm):
+    class Meta:
+        model = RecipeImage
+        fields = ['image', 'description']
+        
 # https://docs.djangoproject.com/en/5.2/topics/forms/modelforms/#inline-formsets
 RecipeIngredientFormSet = inlineformset_factory(
     Recipe,
